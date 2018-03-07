@@ -1,6 +1,7 @@
 -- any module in elm must start with this module declaration
 module Hello exposing (..)
 import Html exposing (text, button, input)
+import Players.Utils exposing (..)
 
 main = text "Hello" 
 
@@ -59,8 +60,33 @@ sum x y =
 indexOf : a -> List a -> Int
 indexOf myA myList = 42
 
--- several type variables: this function takes a tuple and returns another one
+-- several type variables: this function takes a TUPLE and returns another one
 switch : (a, b) -> (b, a)
 switch (a, b) = 
   (b, a)
 
+
+
+
+
+-- FUNCTIONS AS ARGUMENTS
+
+myMapCallback: String -> Int
+myMapCallback myString =
+  42
+
+myDummyList : List Int
+myDummyList = [42, 32]
+
+myStringList = ["hi", "maud"]
+
+
+map: (Int -> String) -> List Int -> List String
+map myMapCallback myList = 
+  myStringList
+
+test = map toString [1, 1]
+
+-- genericMap : (a -> b) -> List a -> List b
+-- genericMap (a -> b) =
+--   List b
