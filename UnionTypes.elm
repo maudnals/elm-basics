@@ -72,3 +72,13 @@ type Maybe a = Nothing | Just a
 
 type Result a b = 
   OK a | Error b
+
+
+
+-- WITH TYPE VARIABLES
+
+type Response a = Confirmation a | Rejection a
+
+
+
+-- TYPICAL USE
