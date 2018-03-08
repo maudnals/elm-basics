@@ -68,3 +68,7 @@ type Bool = True | False
 -- with type variable
 -- maybe = either nothing or something (avoid existence checks)
 type Maybe a = Nothing | Just a 
+
+
+type Result a b = 
+  OK a | Error b
