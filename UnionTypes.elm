@@ -9,7 +9,7 @@ type State = Pending | Done | Failed
 -- Pending, Done and Failed are CONSTRUCTORS (functions)
 -- Union type is also called algebraic data type
 
--- OtherAnswer String is to give a PAYLOAD to the function
+-- OtherAnswer String is to give a ****PAYLOAD**** to the function
 -- type Answer = Yes | No | OtherAnswer String
 
 pendingState : State
@@ -75,10 +75,20 @@ type Result a b =
 
 
 
+
+
 -- WITH TYPE VARIABLES
 
 type Response a = Confirmation a | Rejection a
 
 
 
+
 -- TYPICAL USE
+-- passing around a value that can be one of a known set of possible values. E.g. in a typical web app: we can trigger MESSAGES in order to perform ACTIONS, eg load user (by id), create user, ... and some of these messages would have a payload like the user id or the user object.
+--> think redux
+
+type Msg userId = 
+  LoadUsers
+  | AddUser
+  | EditUser userId
