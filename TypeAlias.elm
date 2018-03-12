@@ -6,7 +6,7 @@ main = text "hi"
 
 
 
--- TYPE ALIASES
+-- TYPE ALIASES (MUST BE CAPITALIZED)
 
 -- imprecise
 label : Int -> String
