@@ -6,7 +6,7 @@ main = text "hi"
 
 -- MODEL
 
-
+-- model is data
 type alias Model = 
   String
 
@@ -23,8 +23,8 @@ init =
 
 -- MESSAGES
 
+-- a message is something that happens in my app and that my app responds to. For example: expand/collapse.
 
--- a message is something that happens in our app, that our app responds to
 type Msg = 
   NoOp
 
@@ -37,6 +37,8 @@ type Msg =
 
 
 -- VIEW
+
+-- the function view renders an Html element using the app model as an input
 
 -- Msg is a union type here used as type variable
 view : Model -> Html Msg
@@ -51,6 +53,7 @@ view myModel =
 
 -- UPDATE
 
+-- the `update` function is called by `program` each time a message is received - `update` responds to messages by updating the model (and returning commands as needed)
 update: Msg -> Model -> ( Model, Cmd Msg)
 update msg model =
   case msg of
