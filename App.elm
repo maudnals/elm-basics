@@ -1,5 +1,7 @@
 module App exposing (..)
 import Html exposing (Html, div, program, text)
+import Html.Events exposing (onClick)
+
 
 
 -- MODEL
@@ -15,7 +17,6 @@ type alias Model =
 init : ( Model, Cmd Msg )
 init =
   ( False, Cmd.none )
-
 
 
 
@@ -37,9 +38,13 @@ type Msg =
 -- A var of type Html is a virtual node
 -- Msg is a union type here used as type variable
 view : Model -> Html Msg
-view myModel =
-  div []
-    []
+view model =
+  if model then 
+    div []
+      [text "I'm expanded"]
+  else 
+    div []
+      [text "I'm collapsed"]
 
 
 
@@ -49,18 +54,18 @@ view myModel =
 -- UPDATE
 
 -- the `update` function is called by `program` each time a message is received - `update` responds to messages by updating the model (and returning commands as needed)
-update: Msg -> Model -> ( Model, Cmd Msg)
+update: Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
   case msg of
-      NoOp -> ( model, Cmd.none)
-
+      Expand -> ( True, Cmd.none )
+      Collapse -> ( False, Cmd.none )
 
 
 
 
 -- SUBSCRIPTIONS
 
--- we use subscriptions to listen to external imput in our app (e.g. user input, browser location changes, etc.)
+-- we use subscriptions to listen to external input in our app (e.g. user input, browser location changes, etc.)
 subscriptions : Model -> Sub Msg
 subscriptions model =
     -- use Sub.none if no interest in user input
