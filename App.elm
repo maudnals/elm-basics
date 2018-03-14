@@ -1,6 +1,9 @@
 module App exposing (..)
-import Html exposing (Html, div, program, text)
+import Html exposing (Html, button, div, program, text)
 import Html.Events exposing (onClick)
+
+
+
 
 
 
@@ -22,12 +25,15 @@ init =
 
 
 
+
 -- MESSAGES
 
 -- a message is something that happens in my app and that my app responds to.
 
 type Msg = 
   Collapse | Expand
+
+
 
 
 
@@ -41,10 +47,12 @@ view : Model -> Html Msg
 view model =
   if model then 
     div []
-      [text "I'm expanded"]
+      [ button [onClick Collapse] [text "Collapse"],
+        text "coucou"
+      ]
   else 
     div []
-      [text "I'm collapsed"]
+      [ button [onClick Expand] [text "Expand"] ]
 
 
 
@@ -63,6 +71,8 @@ update msg model =
 
 
 
+
+
 -- SUBSCRIPTIONS
 
 -- we use subscriptions to listen to external input in our app (e.g. user input, browser location changes, etc.)
@@ -70,6 +80,8 @@ subscriptions : Model -> Sub Msg
 subscriptions model =
     -- use Sub.none if no interest in user input
     Sub.none
+
+
 
 
 
