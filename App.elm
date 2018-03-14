@@ -1,20 +1,20 @@
 module App exposing (..)
 import Html exposing (Html, div, program, text)
 
-main = text "hi"
-
 
 -- MODEL
 
 -- model is data
 type alias Model = 
-  String
+  Bool
 
 -- no arrow for signature just means no input value (only a return value)
 -- and the () are for a tuple
+
+-- init returns an initial model and a command
 init : ( Model, Cmd Msg )
 init =
-  ( "initialModel", Cmd.none )
+  ( False, Cmd.none )
 
 
 
@@ -23,23 +23,18 @@ init =
 
 -- MESSAGES
 
--- a message is something that happens in my app and that my app responds to. For example: expand/collapse.
+-- a message is something that happens in my app and that my app responds to.
 
 type Msg = 
-  NoOp
-
--- here not so interesting cause no interactions => no Msgs. Other example
--- type Msg = Collapse | Expand
-
-
+  Collapse | Expand
 
 
 
 
 -- VIEW
 
--- the function view renders an Html element using the app model as an input
-
+-- the function view renders an Html element using the app model as an input.
+-- A var of type Html is a virtual node
 -- Msg is a union type here used as type variable
 view : Model -> Html Msg
 view myModel =
@@ -65,7 +60,23 @@ update msg model =
 
 -- SUBSCRIPTIONS
 
+-- we use subscriptions to listen to external imput in our app (e.g. user input, browser location changes, etc.)
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    -- use Sub.none if no interest in user input
+    Sub.none
+
 
 
 
 -- MAIN
+
+main : Program Never Model Msg
+main = 
+  program 
+    {
+      init = init,
+      view = view,
+      update = update,
+      subscriptions = subscriptions 
+    }
