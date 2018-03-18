@@ -5,8 +5,6 @@ import Html.Events exposing (onClick)
 
 
 
-
-
 -- MODEL
 
 -- model is data
@@ -16,7 +14,7 @@ type alias Model =
 -- no arrow for signature just means no input value (only a return value)
 -- and the () are for a tuple
 
--- init returns an initial model and a command
+-- init returns an initial model and a command (with a msg payload)
 init : ( Model, Cmd Msg )
 init =
   ( False, Cmd.none )
@@ -42,7 +40,7 @@ type Msg =
 
 -- the function view renders an Html element using the app model as an input.
 -- A var of type Html is a virtual node
--- Msg is a union type here used as type variable
+-- Msg is a union type here used as type variable SO THAT WE CAN USE MSG (AS ON CLICK TRIGGER) IN THE HTML
 view : Model -> Html Msg
 view model =
   if model then 
@@ -61,7 +59,7 @@ view model =
 
 -- UPDATE
 
--- the `update` function is called by `program` each time a message is received - `update` responds to messages by updating the model (and returning commands as needed)
+-- the `update` function is called BY `HTML.program` each time a message is received - `update` responds to messages by updating the model (and returning the state (and commands) as needed). `update`returns the desired state.
 update: Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
   case msg of
@@ -87,8 +85,12 @@ subscriptions model =
 
 
 -- MAIN
-
+-- main is a value of type Program Never Model Msg
+-- Never (no flags), Model (main data type is Model) and Msg (main msg style = Msg) are variable types for Program. 
+-- (Never, Model and Msg) are the arguments of the type Program (Program is a CONTAINER TYPE)
+-- so: main is a program that will never has flags, has Model as main data type and Msg as the main type of messages flowing through the app.
 main : Program Never Model Msg
+-- Html.program wires everything together
 main = 
   program 
     {
