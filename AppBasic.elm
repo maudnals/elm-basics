@@ -7,7 +7,7 @@ import Html.Events exposing (onClick)
 
 -- MODEL
 
--- model is data
+-- model is data (capitalized because type alias)
 type alias Model = 
   Bool
 
@@ -27,6 +27,7 @@ init =
 -- MESSAGES
 
 -- a message is something that happens in my app and that my app responds to.
+-- Another way to put it: messages represent everything important that happen in an app. See Subscriptions.elm to grab this.
 
 type Msg = 
   Collapse | Expand

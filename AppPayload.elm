@@ -21,7 +21,8 @@ type Msg = Increment Int
 view : Model -> Html Msg
 view model =
   div []
-    [ button [ onClick (Increment 2)] [text "+"]]
+    [ button [ onClick (Increment 2)] [text "+"],
+    text (toString model)]
 
 -- update
 update : Msg -> Model -> (Model, Cmd Msg)
