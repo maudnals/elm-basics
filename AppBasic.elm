@@ -1,4 +1,4 @@
-module App exposing (..)
+module AppBasic exposing (..)
 import Html exposing (Html, button, div, program, text)
 import Html.Events exposing (onClick)
 
@@ -61,7 +61,7 @@ view model =
 -- UPDATE
 
 -- the `update` function is called BY `HTML.program` each time a message is received.
--- `update` responds to messages by updating the model (and returning the state (and commands) as needed).
+-- `update` responds to messages by updating the model (and returns the desired state (and commands) as needed).
 update: Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
   case msg of
@@ -92,7 +92,8 @@ subscriptions model =
 -- (Never, Model and Msg) are the arguments of the type Program (Program is a CONTAINER TYPE)
 -- so: main is a program that will never has flags, has Model as main data type and Msg as the main type of messages flowing through the app.
 main : Program Never Model Msg
--- Html.program wires everything together
+-- Html.program wires everything together.
+-- It's usually the only place where an Elm app holds state (centralized in one big state tree)
 main = 
   program 
     {
