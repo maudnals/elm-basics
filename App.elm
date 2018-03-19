@@ -41,6 +41,7 @@ type Msg =
 -- the function view renders an Html element using the app model as an input.
 -- A var of type Html is a virtual node
 -- Msg is a union type here used as type variable SO THAT WE CAN USE MSG (AS ON CLICK TRIGGER) IN THE HTML
+-- "this view is of type Html Msg"
 view : Model -> Html Msg
 view model =
   if model then 
@@ -59,7 +60,8 @@ view model =
 
 -- UPDATE
 
--- the `update` function is called BY `HTML.program` each time a message is received - `update` responds to messages by updating the model (and returning the state (and commands) as needed). `update`returns the desired state.
+-- the `update` function is called BY `HTML.program` each time a message is received.
+-- `update` responds to messages by updating the model (and returning the state (and commands) as needed).
 update: Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
   case msg of
