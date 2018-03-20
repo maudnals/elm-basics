@@ -27,7 +27,7 @@ init =
 -- MESSAGES
 
 -- a message is something that happens in my app and that my app responds to.
--- Another way to put it: messages represent everything important that happen in an app. See Subscriptions.elm to grab this.
+-- Another way to put it: messages represent everything important that happen in an app. See Subscriptions.elm to grab this. That's why Msg are used everywhere as type variables / payloads: in Cmd, in Sub, etc.
 
 type Msg = 
   Collapse | Expand

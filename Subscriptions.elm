@@ -59,11 +59,24 @@ update msg model =
 
 
 -- subscriptions
-subscriptions : 
+subscriptions : Model -> Sub Msg
+subscriptions model =
+-- sub.batch takes a list of subscriptions and returns one that includes them all. We want to listen to clicks and downs,so we use batch.
+    Sub.batch [
+      Mouse.clicks MouseMsg, 
+      Keyboard.downs KeyMsg
+    ]
+-- subscriptions could be dynamic - they could change during the lifecycle of the app, depending on what's in the model.
+-- that's why we pass in the model as argument.
 
+-- these subscriptions will produce Msg values that get fed right back into our update function.
 
+-- Mouse.clicks take a MESSAGE CONSTRUCTOR and returns a subscription.
+-- message constructor: takes a position and returns a msg.
 
-
+-- clicks : (Position -> msg) -> Sub msg
+-- clicks tagger =
+--   subscription (MySub "click" tagger)
 
 
 -- main
