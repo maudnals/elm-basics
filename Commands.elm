@@ -46,6 +46,9 @@ update msg model =
         ( model, Random.generate OnResult (Random.int 1 6) )
       OnResult int ->
         ( int, Cmd.none )
+-- Random.generate creates not a random number, but a COMMAND that will generate a random number. Random.generate takes as arguments:
+-- a constructor for the message that will be fed back to the app after generation - in that case, OnResult
+-- a range and features of the number to generate
 
 
 
