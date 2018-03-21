@@ -77,6 +77,7 @@ update msg model =
 -- SUBSCRIPTIONS
 
 -- we use subscriptions to listen to external input in our app (e.g. user input, browser location changes, etc.)
+-- see subscriptions chapter for more details
 subscriptions : Model -> Sub Msg
 subscriptions model =
     -- use Sub.none if no interest in user input

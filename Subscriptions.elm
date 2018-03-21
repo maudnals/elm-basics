@@ -3,8 +3,8 @@ import Html exposing (Html, div, text, program)
 import Mouse
 import Keyboard
 
--- subscriptions = how the app can listen to external input
--- e.g. keyboard and mouse, browser location change, websocket events
+-- Subscriptions are how the app can listen to external input or events
+-- e.g. keyboard and mouse, browser location change, WEBSOCKET EVENT
 
 
 
@@ -66,14 +66,10 @@ subscriptions model =
       Mouse.clicks MouseMsg, 
       Keyboard.downs KeyMsg
     ]
--- subscriptions could be dynamic - they could change during the lifecycle of the app, depending on what's in the model.
--- that's why we pass in the model as argument.
-
--- these subscriptions will produce Msg values that get fed right back into our update function.
-
--- Mouse.clicks take a MESSAGE CONSTRUCTOR and returns a subscription.
--- message constructor: takes a position and returns a msg.
-
+-- Subscriptions could be dynamic - they could change during the lifecycle of the app, depending on what's in the model. that's why we pass in the model as argument.
+-- These subscriptions will produce Msg values that get fed right back into our `update` function.
+-- Mouse.clicks takes a MESSAGE CONSTRUCTOR and returns a subscription. message constructor: takes a position and returns a msg.
+-- tagging means wrapping in a msg
 -- clicks : (Position -> msg) -> Sub msg
 -- clicks tagger =
 --   subscription (MySub "click" tagger)
@@ -91,5 +87,3 @@ main =
       update = update,
       subscriptions = subscriptions 
     }
-
-
